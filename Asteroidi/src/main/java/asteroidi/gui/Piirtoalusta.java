@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package asteroidi.gui;
 
 /**
  *
  * @author mikaelpa
  */
-public class Main {
+public class Piirtoalusta {
     
 }
