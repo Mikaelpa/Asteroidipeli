@@ -9,6 +9,7 @@ public class Alus {
     
     public Alus() {
         this.koko = 10;
+        this.nopeus = 0;
     }
     
     public int getX() {
@@ -20,14 +21,14 @@ public class Alus {
     }
     
     public void kiihdyta() {
-        nopeus += 0.1;
+        this.nopeus = 2;
     }
     
     public void pysahdy() {
-        nopeus = 0;
+        this.nopeus = 0;
     }
     
-    public void setX(int luku){
+    public void setX(int luku) {
         x = luku;
     }
     
@@ -36,8 +37,10 @@ public class Alus {
     }    
     
     public boolean osuu(int toinenX, int toinenY) {
-        if (this.x == toinenX && this.y == toinenY) {
-            return true;
+        if (this.x == toinenX) {
+            if (this.y == toinenY) {
+                return true;
+            }
         }
         return false;
     } 

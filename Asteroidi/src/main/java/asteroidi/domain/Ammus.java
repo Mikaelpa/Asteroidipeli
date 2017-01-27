@@ -18,7 +18,7 @@ public class Ammus {
         return this.y;
     }
     
-    public void setX(int luku){
+    public void setX(int luku) {
         x = luku;
     }
     

@@ -8,10 +8,12 @@ public class Asteroidi {
     public int y;
     public int kulmia;
     
-    public Asteroidi(){
-        koko = 5 + (int)(Math.random() * 15); 
-        nopeus = 1;
-        kulmia = 6 + (int)(Math.random() * 9);
+    public Asteroidi(int uusiX, int uusiY) {
+        this.kulmia = 6 + (int) (Math.random() * 9);
+        this.koko = 5 + (int) (Math.random() * 15);
+        this.nopeus = 0;
+        this.x = uusiX;
+        this.y = uusiY;
         
     }
     
@@ -23,7 +25,7 @@ public class Asteroidi {
         return this.y;
     }
        
-    public void setX(int luku){
+    public void setX(int luku) {
         x = luku;
     }
     

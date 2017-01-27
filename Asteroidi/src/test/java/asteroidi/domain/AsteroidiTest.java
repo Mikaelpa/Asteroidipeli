@@ -13,14 +13,14 @@ public class AsteroidiTest {
 
     @Test
     public void testUusiAsteroidi() {
-        Asteroidi asteroidi = new Asteroidi();
-        int i = 0;
-        assertEquals(i, asteroidi.getX());
+        Asteroidi asteroidi = new Asteroidi(3,8);
+        assertEquals(3, asteroidi.getX());
+        assertEquals(8, asteroidi.getY());
     }
     
     @Test
     public void testAsteroidiSetX() {
-        Asteroidi asteroidi = new Asteroidi();
+        Asteroidi asteroidi = new Asteroidi(4,8);
         int i = 8;
         asteroidi.setX(i);
         assertEquals(i, asteroidi.getX());
@@ -28,10 +28,9 @@ public class AsteroidiTest {
 
     @Test
     public void testAsteroidiSetY() {
-        Asteroidi asteroidi = new Asteroidi();
-        int i = 9;
-        asteroidi.setY(i);
-        assertEquals(i, asteroidi.getY());
+        Asteroidi asteroidi = new Asteroidi(4,9);
+        asteroidi.setY(5);
+        assertEquals(5, asteroidi.getY());
     }
     
     @Test
@@ -71,7 +70,7 @@ public class AsteroidiTest {
         Alus alus = new Alus();
         int uusiX = 5;
         int uusiY = 8;
-        alus.setX(uusiY);
+        alus.setX(uusiX);
         alus.setY(uusiY);
         assertTrue(alus.osuu(uusiX, uusiY));
     }
@@ -79,7 +78,7 @@ public class AsteroidiTest {
     @Test
     public void testAmmusOsuuAsteroidiin() {
         Ammus ammus = new Ammus();
-        Asteroidi asteroidi = new Asteroidi();
+        Asteroidi asteroidi = new Asteroidi(6,7);
         int astX = asteroidi.getX();
         int astY = asteroidi.getY();
         

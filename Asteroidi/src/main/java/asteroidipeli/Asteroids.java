@@ -21,7 +21,7 @@ public class Asteroids implements ActionListener {
         this.korkeus = korkeus;
         this.alus = new Alus();
         for (int i = 0; i < 10; i++) {
-            Asteroidi uusi = new Asteroidi();
+            Asteroidi uusi = new Asteroidi(4, 5);
             asteroidit.add(uusi);
         }
         addActionListener(this);
