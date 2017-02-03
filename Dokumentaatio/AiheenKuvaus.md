@@ -5,10 +5,15 @@ Toteutetaan Asteroidit- peli. Siinä pelaaja voi liikuttaa avaruusalustaan kaikk
 
 **Toiminnot**: 
 >1.Pelaaja liikkuu nuolinäppäimillä pelialustalla eri suuntiin.
+
 >-Jos pelaaja liikkuu pelialueen yli, alus pomppaa ruudun toiseen päähän
+
 >2.Pelaaja ampuu ammuksia välilyönnillä.
+
 >-Jos ammus osuu asteroidiin, se puolittuu ja pelaajan pisteet kasvaa
+
 >3.Pelaaja törmää asteroidiin.
+
 >-Pelaaja menettää yhden aluksen.
 	
 
