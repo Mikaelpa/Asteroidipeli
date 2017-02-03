@@ -35,10 +35,12 @@
                 <version>1.1.8</version>
                 <configuration>
                     <targetClasses>
-                        <param>asteroidi.domain.*</param>
+                        <param>fi.asteroidi.domain.*</param>
+                        <param>fi.asteroidi.peli.*</param>
                     </targetClasses>
                     <targetTests>
-                        <param>asteroidi.domain.*</param>
+                        <param>fi.asteroidi.domain.*</param>
+                        <param>fi.asteroidi.peli.*</param>
                     </targetTests>
                 </configuration>
             </plugin>
