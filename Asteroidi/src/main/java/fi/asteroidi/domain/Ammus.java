@@ -1,32 +1,40 @@
 
 package fi.asteroidi.domain;
-
+/**
+ * Aluksen ammukset.
+ * @author mikaelpa
+ */
 public class Ammus {
-    public int x;
-    public int y;
+    public double x;
+    public double y;
     public int nopeus;
     
     public Ammus() {
         this.nopeus = 1;
     }
     
-    public int getX() {
+    public double getX() {
         return this.x;
     }
     
-    public int getY() {
+    public double getY() {
         return this.y;
     }
     
-    public void setX(int luku) {
+    public void setX(double luku) {
         x = luku;
     }
     
-    public void setY(int luku) {
+    public void setY(double luku) {
         y = luku;
     }
-    
-    public boolean osuu(int toinenX, int toinenY) {
+    /**
+     * Testataan osuuko ammus asteroidiin.
+     * @param toinenX asteroidin xy.
+     * @param toinenY
+     * @return 
+     */
+    public boolean osuu(double toinenX, double toinenY) {
         if (this.x == toinenX && this.y == toinenY) {
             return true;
         }

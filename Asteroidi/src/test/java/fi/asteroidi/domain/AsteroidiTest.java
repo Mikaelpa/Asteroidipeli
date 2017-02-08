@@ -16,24 +16,23 @@ public class AsteroidiTest {
 
     @Test
     public void testUusiAsteroidi() {
-        Asteroidi asteroidi = new Asteroidi(3,8);
-        assertEquals(3, asteroidi.getX());
-        assertEquals(8, asteroidi.getY());
+        Asteroidi asteroidi = new Asteroidi();
+        assertTrue(asteroidi.getKoko()>0);
     }
     
     @Test
     public void testAsteroidiSetX() {
-        Asteroidi asteroidi = new Asteroidi(4,8);
-        int i = 8;
+        Asteroidi asteroidi = new Asteroidi();
+        double i = 8;
         asteroidi.setX(i);
-        assertEquals(i, asteroidi.getX());
+        assertEquals(i, asteroidi.getX(), 0.1);
     }
 
     @Test
     public void testAsteroidiSetY() {
-        Asteroidi asteroidi = new Asteroidi(4,9);
+        Asteroidi asteroidi = new Asteroidi();
         asteroidi.setY(5);
-        assertEquals(5, asteroidi.getY());
+        assertEquals(5, asteroidi.getY(), 0.1);
     }
 
 

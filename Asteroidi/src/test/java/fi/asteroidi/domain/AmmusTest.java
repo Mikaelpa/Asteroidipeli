@@ -16,26 +16,26 @@ public class AmmusTest {
     @Test
     public void testAmmusSetX() {
         Ammus ammus = new Ammus();
-        int i = 3;
+        double i = 3;
         ammus.setX(i);
-        assertEquals(i, ammus.getX());
+        assertEquals(i, ammus.getX(), 0.1);
     }
       
     @Test
     public void testAmmusSetY() {
         Ammus ammus = new Ammus();
-        int i = 7;
+        double i = 7;
         ammus.setY(i);
-        assertEquals(i, ammus.getY());
+        assertEquals(i, ammus.getY(), 0.1);
     }
     
     
     @Test
     public void testAmmusOsuuAsteroidiin() {
         Ammus ammus = new Ammus();
-        Asteroidi asteroidi = new Asteroidi(6,7);
-        int astX = asteroidi.getX();
-        int astY = asteroidi.getY();
+        Asteroidi asteroidi = new Asteroidi();
+        double astX = asteroidi.getX();
+        double astY = asteroidi.getY();
         
         ammus.setX(astX);
         ammus.setY(astY);
@@ -46,8 +46,8 @@ public class AmmusTest {
     @Test
     public void testAmmusEiOsuAina() {
         Ammus ammus = new Ammus();
-        int uusiX = 3;
-        int uusiY = 4;
+        double uusiX = 3;
+        double uusiY = 4;
         
         ammus.setX(6);
         ammus.setY(4);
