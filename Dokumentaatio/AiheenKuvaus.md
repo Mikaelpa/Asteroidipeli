@@ -15,6 +15,8 @@ Toteutetaan Asteroidit- peli. Siinä pelaaja voi liikuttaa avaruusalustaan kaikk
 #Luokkakaavio
 
 ![Määrittelyvaiheen luokkakaavio](/Dokumentaatio/Asteroidikaavio.png)
+![Sekvenssikaavio välilyönti] (/Dokumentaatio/Valilyonti.png)
+![Sekvenssikaavio ylänuoli] (/Dokumentaatio/Ylanuoli.png)
 
 
 
