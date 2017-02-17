@@ -16,7 +16,6 @@ import static java.lang.Boolean.TRUE;
 import javafx.scene.shape.TriangleMesh;
 import static javafx.scene.transform.Transform.translate;
 import javax.swing.JPanel;
-import static oracle.jrockit.jfr.events.Bits.intValue;
 import sun.java2d.pipe.BufferedOpCodes;
 /**
  * Pelin piirtämiselle oma luokka.
