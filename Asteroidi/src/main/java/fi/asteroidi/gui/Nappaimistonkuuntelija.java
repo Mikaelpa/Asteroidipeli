@@ -13,6 +13,11 @@ import java.awt.event.KeyListener;
 public class Nappaimistonkuuntelija implements KeyListener {
     private final Alus alus;
     
+    /**
+     * Konstruktori.
+     * Annetaan parametrina käytettävä alus
+     * @param alus annettu alus
+     */
     public Nappaimistonkuuntelija(Alus alus) {
         this.alus = alus;
     }
@@ -25,13 +30,18 @@ public class Nappaimistonkuuntelija implements KeyListener {
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             alus.kaantyyVasemmalle = true;
-            
-        }
+        }     
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             alus.kaantyyOikealle = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
+            alus.setNopeus(1);
             alus.liikkuu = true;
+            alus.vanhaKulma = alus.getKulma();
+            
+        }
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            alus.ampuu = true;
         }
         
     }
@@ -40,15 +50,19 @@ public class Nappaimistonkuuntelija implements KeyListener {
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             alus.kaantyyVasemmalle = false;
-            alus.kaantyyOikealle = false;
+            
         }
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             alus.kaantyyOikealle = false;
-            alus.kaantyyVasemmalle = false;
         }
+
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            alus.ampuu = false;
+        }
+        
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            alus.liikkuu = false;
-        }        
+            alus.setNopeus(0);
+        }
     }
     
 }

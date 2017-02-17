@@ -35,6 +35,28 @@ public class AsteroidiTest {
         assertEquals(5, asteroidi.getY(), 0.1);
     }
 
-
+    @Test
+    public void testAsteroidiParametrillatoimii() {
+        Asteroidi asteroidi = new Asteroidi();
+        asteroidi.setX(200);
+        Asteroidi uusi = new Asteroidi(asteroidi, 0);
+        assertEquals(asteroidi.getX(), uusi.getX(), 0.1);
+    }
+    
+    @Test
+    public void testAsteroidiSuuntaParametrina() {
+        Asteroidi asteroidi = new Asteroidi();
+        Asteroidi uusi = new Asteroidi(asteroidi, 3.1);
+        assertEquals(3.1, uusi.getSuunta(), 0.1);
+    }
+    
+    @Test
+    public void testLiikuToimii() {
+        Asteroidi uusi = new Asteroidi();
+        uusi.setX(0);
+        uusi.liiku(2);
+        double test = Math.cos(2);
+        assertEquals(uusi.getX(), test, 0.1);
+    }
 
 }

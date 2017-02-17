@@ -30,25 +30,50 @@ public class AlusTest {
     
     @Test
     public void testAlusOsuukoToimii() {
-        Alus alus = new Alus(3,8);
-        double uusiX = 5;
-        double uusiY = 8;
-        alus.setX(uusiX);
-        alus.setY(uusiY);
-        assertTrue(alus.osuu(uusiX, uusiY));
+        Alus alus = new Alus(200,200);
+        Asteroidi asteroidi = new Asteroidi();
+        asteroidi.setX(199);
+        asteroidi.setY(199);
+        assertTrue(alus.osuu(asteroidi));
     }
     
     @Test
-    public void testLiikkuukoToimii() {
+    public void testLiikkuuToimii() {
         Alus alus = new Alus(3,8);
-        alus.setLiikkuuko(true);
-        assertTrue(alus.liikkuuko());
+        alus.liikkuu = true;
+        assertTrue(alus.liikkuu);
     }
     
     @Test
-    public void testLiikkuukoEiToimiVaaralla() {
+    public void testEiLiikuAlussa() {
         Alus alus = new Alus(3,8);
-        alus.setLiikkuuko(false);
-        assertFalse(alus.liikkuuko());
-    }    
+        assertFalse(alus.liikkuu);
+    }   
+    
+    @Test
+    public void testKiihdytaToimii() {
+        Alus uusi = new Alus(20,20);
+        uusi.setX(0);
+        uusi.kiihdyta(2);
+        double test = Math.cos(2);
+        assertEquals(uusi.getX(), test, 0.1);
+    }
+    
+    @Test
+    public void testKaannyToimii() {
+        Alus uusi = new Alus(20,20);
+        double test = uusi.getKulma();
+        uusi.kaanny(2);
+        test += 2;
+        test %= Math.PI * 2;
+        assertEquals(uusi.getKulma(), test, 0.1);
+    }
+    
+    @Test
+    public void testLiikuToimii() {
+        Alus alus = new Alus(20,20);
+        alus.liiku(1, 1);
+        assertEquals(alus.getX(), 21, 0.1);
+    }
+    
 }

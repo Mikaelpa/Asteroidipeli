@@ -7,6 +7,6 @@ Tehdään asteroidit - peli. Tarkoituksena on liikkua avaruusaluksella ja ammusk
 
 [tuntikirjanpito](Dokumentaatio/Tuntikirjanpito.md)
 
-[pit-raportti] (https://htmlpreview.github.io/?https://github.com/Mikaelpa/Asteroidipeli/blob/master/Dokumentaatio/201702082316/index.html)
+[pit-raportti] (https://htmlpreview.github.io/?https://github.com/Mikaelpa/Asteroidipeli/blob/master/Dokumentaatio/pit/index.html)
 
 [Checkstyle-raportti] (https://htmlpreview.github.io/?https://github.com/Mikaelpa/Asteroidipeli/blob/master/Dokumentaatio/checkstyle.html)

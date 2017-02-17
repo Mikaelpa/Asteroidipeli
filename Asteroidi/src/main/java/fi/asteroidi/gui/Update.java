@@ -3,9 +3,10 @@ package fi.asteroidi.gui;
 
 /**
  * update rajapinta.
+ * päivitys - rajapinta
  * @author mikaelpa
  */
 
-public interface Update {
-    void update();
+public interface Update { //Javadoc?? :(
+    void update(); 
 }

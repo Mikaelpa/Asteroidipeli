@@ -18,7 +18,11 @@ public class Kayttoliittyma implements Runnable {
     private Asteroids peli;
     private Piirtoalusta alusta;
     private int koko;
-    
+    /**
+     * Konstruktori.
+     * Annetaan peli parametrinä
+     * @param peli annettu peli
+     */
     public Kayttoliittyma(Asteroids peli) {
         this.peli = peli;
         this.koko = peli.getKorkeus();

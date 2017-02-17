@@ -40,7 +40,7 @@ public class AmmusTest {
         ammus.setX(astX);
         ammus.setY(astY);
         
-        assertTrue(ammus.osuu(astX, astY));
+        assertTrue(ammus.osuu(asteroidi));
     }
     
     @Test
@@ -49,10 +49,18 @@ public class AmmusTest {
         double uusiX = 3;
         double uusiY = 4;
         
-        ammus.setX(6);
-        ammus.setY(4);
-        
-        assertFalse(ammus.osuu(uusiX, uusiY));
+        Asteroidi asteroidi = new Asteroidi();
+        asteroidi.setX(30);
+        assertFalse(ammus.osuu(asteroidi));
+    }    
+    
+    @Test
+    public void testLiikuToimii() {
+        Ammus uusi = new Ammus();
+        uusi.setX(0);
+        uusi.liiku(2);
+        double test = Math.cos(2);
+        assertEquals(uusi.getX(), test, 0.1);
     }    
         
 }
