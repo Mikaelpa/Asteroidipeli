@@ -12,7 +12,7 @@ Toteutetaan Asteroidit- peli. Siinä pelaaja voi liikuttaa avaruusalustaan kaikk
   - Pelaaja menettää yhden aluksen.
 
 **Rakenne**:
-Käyttöliittymällä on myös oma näppäimistönkuuntelija sekä piirtoalusta. Piirtoalusta käyttää Asteroids-luokkaa sen olioiden piirtämiseen. Asteroids-luokalla on oma näppäimistönkuuntelija, mikä kuuntelee pelaajan näppäinkomentoja ja ohjaa niillä Alus-luokkaa. Asteroids luokalla on myös lista sen käyttämiä asteroideja sekä Alus. Aluksella taas on lista sen käyttämiä Ammus-oliota.
+Käyttöliittymällä on oma näppäimistönkuuntelija sekä piirtoalusta. Piirtoalusta käyttää Asteroids-luokkaa sen olioiden piirtämiseen. Asteroids-luokalla on myös oma näppäimistönkuuntelija, mikä kuuntelee pelaajan näppäinkomentoja ja ohjaa niillä Alus-luokkaa. Asteroids luokalla on myös lista sen käyttämiä asteroideja sekä Alus. Aluksella taas on lista sen käyttämiä Ammus-oliota.
 
 #Luokkakaavio
 ![Määrittelyvaiheen luokkakaavio](/Dokumentaatio/Asteroidikaavio.png)
