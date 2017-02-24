@@ -9,7 +9,6 @@ import java.util.ArrayList;
  */
 public class Alus {
     public int koko;
-    public double nopeus;
     public double x;
     public double y;
     public boolean kaantyyOikealle;
@@ -28,7 +27,6 @@ public class Alus {
         this.x = x;
         this.y = y;
         this.ammukset = new ArrayList<>();
-        this.nopeus = 0;
         this.kaantyyOikealle = false;
         this.kaantyyVasemmalle = false;
         this.ampuu = false;
@@ -39,34 +37,6 @@ public class Alus {
     }
     public double getVanhaKulma() {
         return this.vanhaKulma;
-    }
-    /**Ei vielä käytössä.
-     * lisätään nopeus myöhemmin
-     * @param arvo 
-     */
-    public void nopeuta(double arvo) {
-        this.x *= arvo;
-        this.y *= arvo;
-    }
-    
-    /** Lasketaan uusi y annetusta kulmasta.
-     * 
-     * @param kulma annettu kulma
-     * @return y palautetaan uusi y
-     */
-    
-    public double getYKulmasta(double kulma) {
-        double y = Math.sin(kulma);
-        return y;
-    } 
-    /** Lasketaan uusi x annetusta kulmasta.
-     * 
-     * @param kulma annettu kulma
-     * @return x palautetaan uusi x
-     */
-    public double getXKulmasta(double kulma) {
-        double x = Math.cos(kulma);
-        return x;
     }
     
     /** Käännetään aluksen tämänhetkistä kulmaa / suuntaa x määrä.
@@ -79,28 +49,8 @@ public class Alus {
         this.kulma %= Math.PI * 2;
     }
     
-    /** Liiku.
-     * liikutaan eteenpäin annetuilla xy koordinaateilla
-     * @param x lisätään x aluksen x:n
-     * @param y lisätään y aluksen y:n
-     */
-    
-    public void liiku(double x, double y) {
-        this.x += x;
-        this.y += y;
-    }
-    
     public double getKulma() {
         return this.kulma;
-    }
-    
-    
-    public void setNopeus(double arvo) {
-        this.nopeus = arvo;
-    }
-    
-    public double getNopeus() {
-        return this.nopeus;
     }
 
     public double getX() {
@@ -110,6 +60,7 @@ public class Alus {
     public double getY() {
         return this.y;
     }
+    
     
     /**
      * Liikutetaan alusta haluttuun suuntaan.
@@ -124,11 +75,11 @@ public class Alus {
     
     
     public void setX(double luku) {
-        x = luku;
+        this.x = luku;
     }
     
     public void setY(double luku) {
-        y = luku;
+        this.y = luku;
     }
     
     /** Boolean osuuko.

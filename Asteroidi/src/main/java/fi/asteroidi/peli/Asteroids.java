@@ -4,13 +4,11 @@ package fi.asteroidi.peli;
 import fi.asteroidi.domain.Alus;
 import fi.asteroidi.domain.Asteroidi;
 import fi.asteroidi.gui.Update;
-import static com.sun.java.accessibility.util.AWTEventMonitor.addActionListener;
 import fi.asteroidi.domain.Ammus;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Iterator;
 import javax.swing.Timer;
 
 /**
@@ -26,6 +24,10 @@ public class Asteroids extends Timer implements ActionListener {
     private final ArrayList<Asteroidi> asteroidit;
     private Update update;
     private int i;
+    private int kerroin;
+    private int taso;
+    private int elamat;
+    private int pisteet;
     /**
      * Tekee uuden Alus- olion ja sijoittaa sen pelilaudan keskelle
      * Tekee myös uuden asteroidilistan ja sijoittaa sinne x määrän asteroideja.
@@ -38,10 +40,13 @@ public class Asteroids extends Timer implements ActionListener {
         this.leveys = leveys;
         this.korkeus = korkeus;
         this.alus = new Alus(korkeus / 2 , leveys / 2);
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 10; i++) {
             Asteroidi uusi = new Asteroidi();
             asteroidit.add(uusi);
         }
+        this.taso = 1;
+        this.kerroin = 3;
+        this.elamat = 5;
         addActionListener(this);
         setInitialDelay(1000);
         
@@ -55,11 +60,29 @@ public class Asteroids extends Timer implements ActionListener {
         return this.asteroidit;
     }
     
-    
     public void setUpdate(Update update) {
         this.update = update;
     }
     
+    public int getTaso() {
+        return this.taso;
+    }
+    
+    public int getElamat() {
+        return this.elamat;
+    }
+    public int getPisteet() {
+        return this.pisteet;
+    }
+    /**
+     * Palautetaan alus keskelle näyttöä.
+     * Laitetaan alus pysymään paikoillaan.
+     */
+    public void palautaAlusKeskelle() {
+        this.alus.liikkuu = false;
+        this.alus.setX(korkeus / 2);
+        this.alus.setY(leveys / 2);
+    }
     public Alus getAlus() {
         return this.alus;
     }
@@ -71,7 +94,6 @@ public class Asteroids extends Timer implements ActionListener {
     public int getKorkeus() {
         return this.korkeus;
     }
-    
 
     /**
      * Pelin peruslogiikka tänne, eli mitää tapahtuu jos esim alus törmää asteroidiin
@@ -80,21 +102,32 @@ public class Asteroids extends Timer implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (asteroidit.isEmpty()) {
+            taso++;
+            if (kerroin > 1) {
+                kerroin--;
+            }
+            for (int it = 0; it < 10; it++) {
+                Asteroidi uusi = new Asteroidi();
+                asteroidit.add(uusi);
+            }
+        }
         if (alus.liikkuu) {
             alus.kiihdyta(alus.getVanhaKulma());
         }
-
-        if (alus.ampuu) {
-            Ammus ammus = new Ammus(alus.getX(), alus.getY());
-            ammus.kaanny(alus.getKulma());
-            alus.ammukset.add(ammus);
+        if (i > 2000) {
+            i = 1;
+        }
+        if (alus.ampuu && i % 20 == 0 && alus.liikkuu) {
+            Ammus uusi = new Ammus(alus.getX(), alus.getY());
+            uusi.kaanny(alus.getKulma());
+            alus.ammukset.add(uusi);
         }
         for (Ammus ammus : alus.ammukset) {
             ammus.liiku(ammus.getKulma());
             ammus.liiku(ammus.getKulma());
             ammus.liiku(ammus.getKulma());
         }
-        alus.ampuu = false;
         if (alus.kaantyyOikealle) {
             alus.kaanny(0.05);
         }
@@ -115,9 +148,16 @@ public class Asteroids extends Timer implements ActionListener {
             alus.setY(korkeus);
         }
 
-        if (i % 3 == 0) { // Tehdään joka kolmas päivitys, muutetaan kun keksin miten lisään nopeuden
-            asteroidit.forEach((asteroidi) -> {
+        Iterator<Asteroidi> iter = asteroidit.iterator();
+        if (i % kerroin == 0) {      
+            while (iter.hasNext()) {
+                Asteroidi asteroidi = iter.next();
                 if (asteroidi.onElossa) {
+                    if (taso > 3) {
+                        for (int j = 3; j < taso; j++) {
+                            asteroidi.liiku(asteroidi.getSuunta());
+                        }
+                    }
                     asteroidi.liiku(asteroidi.getSuunta());
                     if (asteroidi.getX() > leveys + 1) {
                         asteroidi.setX(0);
@@ -135,25 +175,21 @@ public class Asteroids extends Timer implements ActionListener {
                         asteroidi.setY(korkeus);
                     }
 
-                    if (alus.osuu(asteroidi)) {
+                    if (alus.osuu(asteroidi) && alus.liikkuu) {
                         System.out.println("Törmäys");
+                        elamat--;
+                        palautaAlusKeskelle();
                     }
                     for (Ammus ammus : alus.ammukset) {
                         if (ammus.osuu(asteroidi)) {
-                            asteroidi.onElossa = false;
-                            asteroidi.setX(600);
-                            asteroidi.setY(600);   //Viedään asteroidi pois pelilaudalta, jos ammus osuu.
-
+                            pisteet += 100;
+                            iter.remove();
                         }
                     }
                 }
-            });
-
+            }
         }
         i++;
-
         update.update();
-
     }
-    
 }

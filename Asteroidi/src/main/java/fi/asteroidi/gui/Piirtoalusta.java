@@ -8,15 +8,9 @@ import fi.asteroidi.peli.Asteroids;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Polygon;
-import java.awt.Rectangle;
-import java.awt.Shape;
 import java.awt.geom.AffineTransform;
-import static java.lang.Boolean.TRUE;
-import javafx.scene.shape.TriangleMesh;
-import static javafx.scene.transform.Transform.translate;
+import java.util.Iterator;
 import javax.swing.JPanel;
-import sun.java2d.pipe.BufferedOpCodes;
 /**
  * Pelin piirtämiselle oma luokka.
  * @author mikaelpa
@@ -47,12 +41,19 @@ public class Piirtoalusta extends JPanel implements Update {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.BLACK);
-        piirraAlus(g2d, peli.getAlus(), peli.getAlus().getX(), peli.getAlus().getY());
-        for (Asteroidi asteroidi : peli.asteroidiLista()) {
-            piirraAsteroidi(g2d, asteroidi, asteroidi.getX(), asteroidi.getY());   
-        }
-        for (Ammus ammus : peli.getAlus().ammukset) {
-            piirraAmmus(g2d, ammus, ammus.getX(), ammus.getY());
+        if (peli.getElamat() > 0) {
+            piirraAlus(g2d, peli.getAlus(), peli.getAlus().getX(), peli.getAlus().getY());
+            piirraPisteet(g2d);
+            Iterator<Asteroidi> iter = peli.asteroidiLista().iterator();
+            while (iter.hasNext()) {
+                Asteroidi asteroidi = iter.next();
+                piirraAsteroidi(g2d, asteroidi, asteroidi.getX(), asteroidi.getY());
+            }
+            for (Ammus ammus : peli.getAlus().ammukset) {
+                piirraAmmus(g2d, ammus, ammus.getX(), ammus.getY());
+            }
+        }   else {
+            g2d.drawString("GAME OVER XD", koko / 2 - 40, koko / 2 - 20);
         }
     }
     
@@ -99,13 +100,21 @@ public class Piirtoalusta extends JPanel implements Update {
      * @param y 
      */
     private void piirraAsteroidi(Graphics2D g2d, Asteroidi asteroidi, double x, double y) {
-        if (asteroidi.onElossa) {
-            AffineTransform tallennus = new AffineTransform();
-            tallennus = g2d.getTransform();
-            g2d.translate(x, y);
-            g2d.draw3DRect(0, 0, asteroidi.koko, asteroidi.koko, true);
-            g2d.setTransform(tallennus);
-        }
+        AffineTransform tallennus;
+        tallennus = g2d.getTransform();
+        g2d.translate(x, y);
+        g2d.draw3DRect(0, 0, asteroidi.koko, asteroidi.koko, true);
+        g2d.setTransform(tallennus);
+
+    }
+    
+    private void piirraPisteet(Graphics2D g2d) {
+        AffineTransform tallennus;
+        tallennus = g2d.getTransform();
+        g2d.drawString("taso: " + peli.getTaso(), 10, 10);
+        g2d.drawString("elämät: " + peli.getElamat(), 10, 20);
+        g2d.drawString("pisteet: " + peli.getPisteet(), 10, 30);
+        g2d.setTransform(tallennus);
     }
 
     /**

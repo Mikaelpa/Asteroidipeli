@@ -13,6 +13,11 @@ public class AlusTest {
     }
     
     @Test
+    public void testAlusVanhakulma() {
+        Alus alus = new Alus(6,7);
+        assertEquals(0, alus.getVanhaKulma(), 0.1);
+    }
+    @Test
     public void testAlusSetX() {
         Alus alus = new Alus(6,7);
         double i = 4;
@@ -69,11 +74,6 @@ public class AlusTest {
         assertEquals(uusi.getKulma(), test, 0.1);
     }
     
-    @Test
-    public void testLiikuToimii() {
-        Alus alus = new Alus(20,20);
-        alus.liiku(1, 1);
-        assertEquals(alus.getX(), 21, 0.1);
-    }
+
     
 }

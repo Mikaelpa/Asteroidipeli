@@ -29,7 +29,15 @@ public class AmmusTest {
         assertEquals(i, ammus.getY(), 0.1);
     }
     
-    
+    @Test
+    public void testAmmusKaannyToimii() {
+        Ammus ammus = new Ammus();
+        ammus.kaanny(1);
+        double i = ammus.getKulma();
+        double b = 1;
+        b %= Math.PI *2;
+        assertEquals(i, b, 0.1);
+    }
     @Test
     public void testAmmusOsuuAsteroidiin() {
         Ammus ammus = new Ammus();

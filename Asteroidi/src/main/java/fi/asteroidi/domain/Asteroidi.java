@@ -19,7 +19,7 @@ public class Asteroidi {
      */
     
     public Asteroidi() {
-        this.koko = 20;
+        this.koko = 30;
         this.nopeus = 0;
         this.x = 0 + (int) (Math.random() * 500);
         this.y = 0 + (int) (Math.random() * 500);
@@ -34,7 +34,7 @@ public class Asteroidi {
      */
     public Asteroidi(Asteroidi vanha, double suunta) {
         this.koko = vanha.getKoko() / 2 + 2;
-        onElossa = true;
+        this.onElossa = true;
         this.x = vanha.getX();
         this.y = vanha.getY();
         this.suunta = suunta;

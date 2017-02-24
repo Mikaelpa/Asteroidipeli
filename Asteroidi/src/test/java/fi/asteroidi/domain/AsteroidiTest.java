@@ -27,6 +27,14 @@ public class AsteroidiTest {
         asteroidi.setX(i);
         assertEquals(i, asteroidi.getX(), 0.1);
     }
+    @Test
+    public void testRandomToimii() {
+        Asteroidi asteroidi = new Asteroidi();
+        assertTrue(asteroidi.x >= 0);
+        assertTrue(asteroidi.x < 501);
+        assertTrue(asteroidi.y >= 0);
+        assertTrue(asteroidi.y < 501);
+    }
 
     @Test
     public void testAsteroidiSetY() {

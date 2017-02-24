@@ -2,6 +2,7 @@
 package fi.asteroidi.gui;
 
 import fi.asteroidi.domain.Alus;
+import fi.asteroidi.peli.Asteroids;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -35,7 +36,6 @@ public class Nappaimistonkuuntelija implements KeyListener {
             alus.kaantyyOikealle = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            alus.setNopeus(1);
             alus.liikkuu = true;
             alus.vanhaKulma = alus.getKulma();
             
@@ -58,10 +58,6 @@ public class Nappaimistonkuuntelija implements KeyListener {
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             alus.ampuu = false;
-        }
-        
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
-            alus.setNopeus(0);
         }
     }
     
