@@ -5,7 +5,7 @@ Tehdään asteroidit - peli. Tarkoituksena on liikkua avaruusaluksella ja ammusk
 #Dokumentaatio
 [Aiheen kuvaus](Dokumentaatio/AiheenKuvaus.md)
 
-[Käyttöohjeet] (Dokumentaatio/Käyttöohjeet.md)
+[Käyttöohjeet] (Dokumentaatio/Kayttöohjeet.md)
 
 [Tuntikirjanpito](Dokumentaatio/Tuntikirjanpito.md)
 
