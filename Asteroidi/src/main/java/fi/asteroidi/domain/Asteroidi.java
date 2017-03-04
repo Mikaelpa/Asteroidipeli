@@ -11,7 +11,6 @@ public class Asteroidi {
     public double y;
     public int kulmia;
     public double suunta;
-    public boolean onElossa;
     
     /**
      * Luodaan uudelle asteroidille random määrä kulmia,
@@ -19,12 +18,11 @@ public class Asteroidi {
      */
     
     public Asteroidi() {
-        this.koko = 30;
+        this.koko = 40;
         this.nopeus = 0;
         this.x = 0 + (int) (Math.random() * 500);
         this.y = 0 + (int) (Math.random() * 500);
         this.suunta = 0.1f + (double) (Math.random() * 5.0f);
-        onElossa = true;
     }
     /**
      * Vaihtoehtoinen konstruktori.
@@ -33,8 +31,7 @@ public class Asteroidi {
      * @param suunta uusi suunta
      */
     public Asteroidi(Asteroidi vanha, double suunta) {
-        this.koko = vanha.getKoko() / 2 + 2;
-        this.onElossa = true;
+        this.koko = vanha.getKoko() / 2 + 5;
         this.x = vanha.getX();
         this.y = vanha.getY();
         this.suunta = suunta;

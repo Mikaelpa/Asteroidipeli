@@ -1,6 +1,7 @@
 
 package fi.asteroidi.gui;
 import fi.asteroidi.peli.Asteroids;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -56,7 +57,7 @@ public class Kayttoliittyma implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("Asteroids");
-        frame.setPreferredSize(new Dimension(peli.getKorkeus(), peli.getLeveys()));
+        frame.setPreferredSize(new Dimension(peli.getKorkeus() + 10, peli.getLeveys() + 30));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         luoKomponentit(frame.getContentPane());
         frame.pack();

@@ -8,7 +8,9 @@ import fi.asteroidi.domain.Ammus;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.ListIterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Timer;
 
 /**
@@ -40,7 +42,7 @@ public class Asteroids extends Timer implements ActionListener {
         this.leveys = leveys;
         this.korkeus = korkeus;
         this.alus = new Alus(korkeus / 2 , leveys / 2);
-        for (int i = 0; i < 10; i++) {
+        for (int a = 0; a < 10; a++) {
             Asteroidi uusi = new Asteroidi();
             asteroidit.add(uusi);
         }
@@ -48,7 +50,7 @@ public class Asteroids extends Timer implements ActionListener {
         this.kerroin = 3;
         this.elamat = 5;
         addActionListener(this);
-        setInitialDelay(1000);
+       
         
     }
     /**
@@ -107,7 +109,7 @@ public class Asteroids extends Timer implements ActionListener {
             if (kerroin > 1) {
                 kerroin--;
             }
-            for (int it = 0; it < 10; it++) {
+            for (int it = 0; it < 9 + taso; it++) {
                 Asteroidi uusi = new Asteroidi();
                 asteroidit.add(uusi);
             }
@@ -148,16 +150,14 @@ public class Asteroids extends Timer implements ActionListener {
             alus.setY(korkeus);
         }
 
-        Iterator<Asteroidi> iter = asteroidit.iterator();
-        if (i % kerroin == 0) {      
+        ListIterator<Asteroidi> iter = asteroidit.listIterator();
+        if (i % kerroin == 0) {
             while (iter.hasNext()) {
                 Asteroidi asteroidi = iter.next();
-                if (asteroidi.onElossa) {
-                    if (taso > 3) {
-                        for (int j = 3; j < taso; j++) {
-                            asteroidi.liiku(asteroidi.getSuunta());
-                        }
-                    }
+                if (asteroidi.getKoko() < 15) {
+                    pisteet += 50;
+                    iter.remove();
+                } else {
                     asteroidi.liiku(asteroidi.getSuunta());
                     if (asteroidi.getX() > leveys + 1) {
                         asteroidi.setX(0);
@@ -176,7 +176,6 @@ public class Asteroids extends Timer implements ActionListener {
                     }
 
                     if (alus.osuu(asteroidi) && alus.liikkuu) {
-                        System.out.println("Törmäys");
                         elamat--;
                         palautaAlusKeskelle();
                     }
@@ -184,9 +183,14 @@ public class Asteroids extends Timer implements ActionListener {
                         if (ammus.osuu(asteroidi)) {
                             pisteet += 100;
                             iter.remove();
+                            Asteroidi uusiA = new Asteroidi(asteroidi, asteroidi.getSuunta() - 1.5);
+                            Asteroidi uusiB = new Asteroidi(asteroidi, asteroidi.getSuunta() + 1.5);
+                            iter.add(uusiA);
+                            iter.add(uusiB);
                         }
                     }
                 }
+
             }
         }
         i++;

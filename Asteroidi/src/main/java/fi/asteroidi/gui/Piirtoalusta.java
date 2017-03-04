@@ -10,6 +10,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.util.Iterator;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 /**
  * Pelin piirtämiselle oma luokka.
@@ -41,6 +42,9 @@ public class Piirtoalusta extends JPanel implements Update {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.BLACK);
+        g2d.fillRect(0, 0, koko, koko);
+        g2d.setColor(Color.WHITE);
+        
         if (peli.getElamat() > 0) {
             piirraAlus(g2d, peli.getAlus(), peli.getAlus().getX(), peli.getAlus().getY());
             piirraPisteet(g2d);
@@ -53,7 +57,7 @@ public class Piirtoalusta extends JPanel implements Update {
                 piirraAmmus(g2d, ammus, ammus.getX(), ammus.getY());
             }
         }   else {
-            g2d.drawString("GAME OVER XD", koko / 2 - 40, koko / 2 - 20);
+            g2d.drawString("GAME OVER :(", koko / 2 - 40, koko / 2 - 20);
         }
     }
     
