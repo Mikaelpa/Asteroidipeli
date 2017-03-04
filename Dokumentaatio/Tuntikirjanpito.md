@@ -6,3 +6,4 @@ Päivä | Tunnit | Kuvaus
 03.02.2017 | 5h | Käyttöliittymän aloittaminen, piirtoalustan ja pelialustan käyttöönotto ja testaus. 
 08.02.2017 | 5h | Aluksen ja asteroidien liikkuminen, lisää testejä.
 17.02.2017 | 4h | Aluksen liikkumista, asteroidien ja ammusten piirtäminen. Testaamista.
+04.03.2017 | 3h | Viimeistely
