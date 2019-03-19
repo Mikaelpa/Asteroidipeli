@@ -1,8 +1,8 @@
 
-#Tiivistelmä
+# Tiivistelmä
 Tehdään asteroidit - peli. Tarkoituksena on liikkua avaruusaluksella ja ammuskella asteroideja. Pelaaja menettää elämän, kun hän osuu asteroidiin. Peli loppuu kun pelaajalla ei ole enää aluksia käytettävissä.
 
-#Dokumentaatio
+# Dokumentaatio
 [Aiheen kuvaus](Dokumentaatio/AiheenKuvaus.md)
 
 [Käyttöohjeet] (Dokumentaatio/Kayttöohjeet.md)
